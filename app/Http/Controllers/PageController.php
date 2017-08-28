@@ -9,15 +9,8 @@ use App\user;
 class PagesController extends Controller
 {
     public function welcome() {
-
-    	$user = user::find(5);
-    	if ($user) {
-    		$user = $user->passport;
-    	} else {
-    		$user = new user;
-    		$user->number = 'none';
-    	}
-    	return view('welcome', ['user' => $user]);
+    	// $user = user::find(5)->passport;
+    	return view('welcome');
     }
 
     public function about() {
