@@ -79,7 +79,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel <?php echo e($user->number); ?>
+
                 </div>
 
                 <div class="links">
