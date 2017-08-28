@@ -18,3 +18,5 @@ Route::resource('artists', 'ArtistsController');
 
 Route::get('dota', 'ApiController@dota');
 Route::get('foursquare', 'ApiController@foursquare');
+
+Route::resource('todo', 'ToDoController');

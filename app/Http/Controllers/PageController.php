@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\user;
 
 class PagesController extends Controller
 {
     public function welcome() {
-    	return view('welcome');
+    	$user = user::find(1)->passport;
+    	return view('welcome', ['user' => $user]);
     }
 
     public function about() {

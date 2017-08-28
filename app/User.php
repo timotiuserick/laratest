@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable 
 {
     use Notifiable;
 
@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function passport() {
+        return $this->hasOne(Passport::class);
+    }
+
+    public function mobile() {
+        return $this->hasMany(Mobile::class);
+    }
 }
