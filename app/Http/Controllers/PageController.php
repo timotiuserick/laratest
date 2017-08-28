@@ -9,7 +9,14 @@ use App\user;
 class PagesController extends Controller
 {
     public function welcome() {
-    	$user = user::find(1)->passport;
+
+    	$user = user::find(5);
+    	if ($user) {
+    		$user = $user->passport;
+    	} else {
+    		$user = new user;
+    		$user->number = 'none';
+    	}
     	return view('welcome', ['user' => $user]);
     }
 
