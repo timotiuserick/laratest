@@ -8,6 +8,11 @@ use App\user;
 
 class PagesController extends Controller
 {
+	public function __construct() {
+		// $this->middleware('test', 'test2', 'test3');
+		$this->middleware('test');
+	}
+
     public function welcome() {
     	// $user = user::find(5)->passport;
     	return view('welcome');
