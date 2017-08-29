@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
 	public function __construct() {
 		// $this->middleware('test', 'test2', 'test3');
-		$this->middleware('test');
+		// $this->middleware('test');
 	}
 
     public function welcome() {
