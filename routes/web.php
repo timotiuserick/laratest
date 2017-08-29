@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'PagesController@welcome');
-Route::get('about', 'PagesController@about');
+Route::get('about', 'PagesController@about')->middleware('test');
+
 
 Route::resource('artists', 'ArtistsController');
 
