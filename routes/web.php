@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PagesController@welcome');
-Route::get('about', 'PagesController@about')->middleware('test');
+Route::get('about', 'PagesController@about');
 
 
 Route::resource('artists', 'ArtistsController');
