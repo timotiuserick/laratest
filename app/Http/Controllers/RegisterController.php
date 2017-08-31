@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\User;
-use GuzzleHttp\Client;
+use Laravel\Passport\Client;
 
 class RegisterController extends Controller
 {
+	private $client;
+	public function __construct() {
+		$this->client = Client::find(1);
+	}
+
     public function register(Request $request) {
 
     	$this->validate($request, [
@@ -26,8 +31,8 @@ class RegisterController extends Controller
 
     	$params = [
     		'grant_type' => 'password',
-    		'client_id' => 1,
-    		'client_secret' => 'uAGesg9AZzIVkFeJJ1SMrwlr4VwnTtnOd2jGknAA',
+    		'client_id' => $this->client->id,
+    		'client_secret' => $this->client->secret,
     		'username' => request('email'),
     		'password' => request('password'),
     		'scope' => '*'
