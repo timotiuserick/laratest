@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Laravel\Passport\Client;
 
 class LoginController extends Controller
 {
+	private $client;
+	public function __construct() {
+		$this->client = Client::find(1);
+	}
+
     public function login(Request $request) {
     	$this->validate($request, [
     		'email' => 'required',
@@ -17,8 +23,8 @@ class LoginController extends Controller
 
     	$params = [
     		'grant_type' => 'password',
-    		'client_id' => 1,
-    		'client_secret' => 'uAGesg9AZzIVkFeJJ1SMrwlr4VwnTtnOd2jGknAA',
+    		'client_id' => $this->client->id,
+    		'client_secret' => $this->client->secret,
     		'username' => request('email'),
     		'password' => request('password'),
     		'scope' => '*'
