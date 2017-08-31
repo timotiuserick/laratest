@@ -28,3 +28,5 @@ Route::get('tasks/{id}', 'TaskController@show');
 Route::middleware('auth:api')->post('tasks', 'TaskController@store');
 Route::put('tasks/{id}', 'TaskController@update');
 Route::delete('tasks/{id}', 'TaskController@destroy');
+
+Route::middleware('auth:api')->post('tasks/send', 'TaskController@sendEmail');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use Mail;
+use App\Mail\SendMail;
 
 class TaskController extends Controller
 {
@@ -79,6 +81,18 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
         $task->delete();
+        
+        return response()->json(null, 204);
+    }
+
+    public function sendEmail()
+    {
+      //  Mail::send(['text' => 'mail.mail'], ['name', 'Erick'], function($message) {
+    		// $message->to('timotiusericks@gmail.com', '')->subject('Hello laratest');
+    		// $message->from('timotiusericks@gmail.com', 'fidgetspinner');
+      //  });
+
+    	Mail::send(new SendMail);
         
         return response()->json(null, 204);
     }
