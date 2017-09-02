@@ -7,9 +7,14 @@ use App\Task;
 
 class TaskController extends Controller
 {
-     public function index()
+     public function index(Request $request)
     {
-        $tasks = Task::all();
+    	$page = $request->input('page');
+    	if (is_null($page)) {
+    		$page = 1;
+    	}
+    	
+        $tasks = Task::paginate(10, ['*'], 'page', $page);
         return $tasks;
     }
 
