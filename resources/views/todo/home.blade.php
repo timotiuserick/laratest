@@ -39,7 +39,7 @@
                       <tbody>
                         @foreach ($tasks as $task)
                             <tr>
-                                <td>{{$task->id}}</td>
+                                <td>{{$loop->index+1}} {{$task->id}}</td>
                                 <td><a href="/todo/{{$task->id}}"><?php echo substr($task->body, 0, 10); ?></a></td>
                                 <td>{{$task->created_at->diffforHumans()}}</td>
                                 <td>{{$task->updated_at->diffforHumans()}}</td>
@@ -53,6 +53,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        {{$tasks->links()}}
                       </tbody>
                     </table> 
                 </div>
