@@ -21,3 +21,7 @@ Route::get('dota', 'ApiController@dota');
 Route::get('foursquare', 'ApiController@foursquare');
 
 Route::resource('todo', 'ToDoController');
+
+Route::get('upload', 'TodoController@uploadForm');
+Route::post('upload/store', 'TodoController@upload');
+Route::get('upload/show', 'TodoController@showUploadedImage');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Task;
 
 class ToDoController extends Controller
@@ -110,5 +111,28 @@ class ToDoController extends Controller
 
         session()->flash('message', 'Deleted Succesfully');
         return redirect('todo');
+    }
+
+    public function uploadForm()
+    {
+        return view('upload.upload');
+    }
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            // return $request->file('image');
+            // return $request->image->extension();
+            // return $request->image->path();
+            return $request->image->store('public/images');
+        } else {
+            return 'Gak ada file';
+        }
+    }
+
+    public function showUploadedImage()
+    {
+        $images = Storage::files('public/images');
+        return view('upload.images', ['images' => $images]);
     }
 }
